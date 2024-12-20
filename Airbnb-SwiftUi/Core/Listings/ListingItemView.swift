@@ -56,8 +56,6 @@ struct ListingItemView: View {
                     Text("4.86")
                 }
             }
-        
-            
             .font(.footnote)
         }
     }
