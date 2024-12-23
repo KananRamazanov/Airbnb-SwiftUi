@@ -15,9 +15,11 @@ struct ExploreView: View {
                 SearchAndFilterBar()
                 LazyVStack(spacing: 32) {
                     ForEach(0 ... 10, id: \.self) { listing in
-                        ListingItemView()
-                            .frame(height: 400)
-                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                        NavigationLink(value: listing) {
+                            ListingItemView()
+                                .frame(height: 400)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                        }
                     }
                 }
                 .padding()
