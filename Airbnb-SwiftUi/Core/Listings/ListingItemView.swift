@@ -38,6 +38,7 @@ struct ListingItemView: View {
                 VStack(alignment: .leading) {
                     Text("Miami,Florida")
                         .fontWeight(.semibold)
+                        .foregroundStyle(.black)
                     Text("12 mi away")
                         .foregroundStyle(.gray)
                     Text("Nov 3 - 10")
@@ -47,6 +48,7 @@ struct ListingItemView: View {
                             .fontWeight(.semibold)
                         Text("night")
                     }
+                    .foregroundStyle(.black)
                 }
                 Spacer()
                 //ratings
@@ -55,6 +57,7 @@ struct ListingItemView: View {
                     
                     Text("4.86")
                 }
+                .foregroundStyle(.black)
             }
             .font(.footnote)
         }
