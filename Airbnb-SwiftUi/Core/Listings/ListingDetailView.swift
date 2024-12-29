@@ -16,21 +16,79 @@ struct ListingDetailView: View {
         "listing-4",
     ]
     
+
     var body: some View {
       ScrollView {
-          TabView {
-              ForEach(images, id: \.self) { image in
-                 Image (image)
-                      .resizable()
-                      .scaledToFill()
+        ListingImageCarouselView()
+              .frame(height: 320)
+          
+          
+          
+          VStack (alignment: .leading, spacing: 8) {
+              Text("Miami Villa")
+                  .font(.title)
+                  .fontWeight(.semibold)
+              
+              VStack (alignment: .leading) {
+                  HStack (spacing: 2) {
+                      Image(systemName: "star.fill")
+                      
+                      Text("4.86")
+                      Text("-")
+                      Text("28 reviews")
+                          .underline()
+                          .fontWeight(.semibold)
+                  }
+                  .foregroundStyle(.black)
+                      
+                  Text("Miami, Florida")
+                
+                
+                  }
+              .font(.caption)
               }
+          .padding(.leading)
+          .frame(maxWidth: .infinity, alignment: .leading)
+              
+          
+          Divider()
+          
+          //Host info view
+          
+          HStack {
+              VStack(alignment: .leading,spacing: 4) {
+                  Text("Entire villa hosted by John Smith")
+                      .font(.headline)
+                      .frame(width: 250, alignment: .leading)
+                  
+                  HStack(spacing: 2) {
+                      Text("4 guests -")
+                      Text("4 bedrooms -")
+                      Text("4 beds -")
+                      Text("3 baths")
+                          
+                  }
+                  .font(.caption)
+                  
+              }
+              .frame(width: 300,alignment: .leading)
+              
+              
+              Spacer()
+              
+              Image("male-profile-photo")
+                  .resizable()
+                  .scaledToFill()
+                  .frame(width: 64, height: 64)
+                  .clipShape(Circle())
           }
-          .frame(height: 320)
-          .clipShape(RoundedRectangle(cornerRadius: 10))
-          .tabViewStyle(.page)
+          .padding()
+          
+          }
+        
         }
     }
-}
+
 
 #Preview {
     ListingDetailView()
