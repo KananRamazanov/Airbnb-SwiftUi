@@ -84,6 +84,8 @@ struct ListingDetailView: View {
           }
           .padding()
           
+          
+          Divider()
           }
         
         }
