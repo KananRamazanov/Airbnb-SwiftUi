@@ -14,13 +14,16 @@ struct ExploreView: View {
     
     var body: some View {
         NavigationStack {
-            
             if showDestinationSearchView {
-                DestinationSearchView()
+                DestinationSearchView(show: $showDestinationSearchView)
             } else {
                 ScrollView {
-                    
                     SearchAndFilterBar()
+                        .onTapGesture {
+                            withAnimation(.snappy) {
+                                showDestinationSearchView.toggle()
+                            }
+                        }
                     LazyVStack(spacing: 32) {
                         ForEach(0 ... 10, id: \.self) { listing in
                             NavigationLink(value: listing) {
