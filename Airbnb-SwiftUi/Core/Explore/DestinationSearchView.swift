@@ -50,10 +50,42 @@ struct DestinationSearchView: View {
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding()
             .shadow(radius: 10)
+            
+            
+            //date selection view
+            CollapsedPickerView(title: "When", description: "Add dates")
+            
+            
+            //num guests view
+            CollapsedPickerView(title: "Who", description: "Add guests")
         }
     }
 }
 
 #Preview {
     DestinationSearchView(show: .constant(false))
+}
+
+struct CollapsedPickerView: View {
+    let title: String
+    let description: String
+    var body: some View {
+        VStack {
+            HStack {
+                Text(title)
+                    .foregroundStyle(.gray)
+                
+                Spacer()
+                
+                Text(description)
+            }
+            .fontWeight(.semibold)
+            .font(.subheadline)
+        }
+        .padding()
+        .background(.white)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .padding()
+        .shadow(radius: 10)
+    }
 }
