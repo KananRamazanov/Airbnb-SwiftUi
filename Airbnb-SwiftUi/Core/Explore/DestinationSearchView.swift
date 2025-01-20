@@ -16,6 +16,8 @@ struct DestinationSearchView: View {
     @Binding var show: Bool
     @State private var destination = ""
     @State private var selectedOption: DestinationSearchOptions = .location
+    @State private var startDate = Date()
+    @State private var endDate = Date()
     var body: some View {
         VStack {
             
@@ -70,19 +72,29 @@ struct DestinationSearchView: View {
             
             //date selection view
             
-            VStack {
+            VStack(alignment: .leading) {
                 if selectedOption == .dates {
-                    HStack {
-                        Text("Show Expanded View")
-                        Spacer()
+                    Text("When's your trip?")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
+                    VStack {
+                        DatePicker("From", selection: $startDate, displayedComponents: .date)
+                        
+                        Divider()
+                        
+                        DatePicker("To", selection: $endDate, displayedComponents: .date)
                     }
+                    .foregroundStyle(.gray)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
                 }
                 else {
                     CollapsedPickerView(title: "When", description: "Add dates")
                 }
             }
             .padding()
-            .frame(height: selectedOption == .dates ? 120 : 64)
+            .frame(height: selectedOption == .dates ? 180 : 64)
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .padding()
